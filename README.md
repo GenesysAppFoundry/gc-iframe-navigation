@@ -7,7 +7,7 @@ A custom client application POC which demonstrates navigation to the inner ifram
 1. Set the `target` query parameter to the desired URL.
    Ex:
 
-   `https://princemerluza.github.io/gc-iframe-navigation/?target=https://en.wikipedia.org`
+   `https://genesysappfoundry.github.io/gc-iframe-navigation/?target=https://en.wikipedia.org`
 
 2. Enter the complete URL to your Genesys Cloud Custom Application
 
