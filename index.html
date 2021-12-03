@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IFrame Navigator</title>
+  <style>
+    body {
+      margin: 0;
+    }
+    iframe {
+      width: 100%;
+      height: 95vh;
+    }
+    .navigation-bar {
+      display: flex;
+      height: 40px;
+      background-color: #444;
+      padding: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navigation-bar">
+    <button id="btn-back">Back</button>
+    <button id="btn-next">Next</button>
+    <button id="btn-home">Home</button>
+  </div>
+  <iframe id="content-iframe" name="content-iframe" src="" frameborder="0"></iframe>
+
+  <script>
+    const iframe = document.getElementById('content-iframe');
+    const btnBack = document.getElementById('btn-back');
+    const btnNext = document.getElementById('btn-next');
+    const btnHome = document.getElementById('btn-home');
+
+    // Set the target query param for the iframe, others pass down to inner iframe
+    const params = (new URL(document.location)).searchParams;
+    let target = decodeURI(params.get('target'));
+    
+    params.delete('target')
+    target += `?${params.toString()}`
+
+    // Set the URL src of the iframe
+    if(target){
+      iframe.src = target;
+    }
+
+    // Button functionalities
+    btnBack.addEventListener('click', () => {
+      window.history.back();
+    })
+
+    btnNext.addEventListener('click', () => {
+      window.history.forward();
+    })
+
+    btnHome.addEventListener('click', () => {
+      window.location.reload();
+    })
+
+  </script>
+</body>
+
+</html>
